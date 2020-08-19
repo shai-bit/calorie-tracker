@@ -1,0 +1,85 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  /* 1rem = 10px */
+  font-size: 62.5%;
+}
+
+.navbar {
+  font-family: "Montserrat", sans-serif;
+  height: 7rem;
+  margin: 5px 5px 0 5px;
+  background-color: rgb(7, 0, 44);
+  border-radius: 20px;
+  position: relative;
+}
+
+.navbar__holder {
+  display: inline-block;
+}
+
+.navbar__holder.home {
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  transform: translate(0, -50%);
+}
+
+.navbar__holder.account {
+  font-size: 1.4rem;
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  transform: translate(0, -50%);
+}
+
+/* Clears up default button style */
+.navbar__button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+.navbar__button.one {
+  margin-right: 2rem;
+  color: white;
+}
+
+.navbar__button.signup {
+  color: white;
+  padding: 10px;
+  border-radius: 100px;
+  background: linear-gradient(-45deg, #ffa63d, #ff3d77, #338aff, #3cf0c5);
+  background-size: 600%;
+  animation: anime 16s linear infinite;
+}
+
+@keyframes anime {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.navbar__button.signup:hover {
+  background-position: right center;
+}
+
+.navbar__button.logo,
+.navbar__button.settings {
+  color: white;
+}

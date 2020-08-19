@@ -1,0 +1,19 @@
+.welcome {
+  position: relative;
+  height: 87vh;
+  background-color: rgb(223, 215, 215);
+  background-image: url(../../resources/home-img.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top center;
+}
+
+.msg {
+  position: absolute;
+  top: 5%;
+  left: 25%;
+  font-family: "Libre Caslon Display", serif;
+  font-size: 7rem;
+  height: 8rem;
+  width: 4rem;
+}
