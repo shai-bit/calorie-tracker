@@ -4,7 +4,7 @@ import "./Welcome.css";
 const Welcome = () => {
   return (
     <div className="welcome">
-      <div className="msg">Calorie tracking made easy.</div>
+      <h1 className="msg">Calorie tracking made easy.</h1>
     </div>
   );
 };

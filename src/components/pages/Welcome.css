@@ -1,19 +1,69 @@
 .welcome {
   position: relative;
   height: 87vh;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
   background-color: rgb(223, 215, 215);
   background-image: url(../../resources/home-img.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: top center;
+  animation: 0.8s ease-out 0s 1 slideInFromRight;
+  backface-visibility: hidden;
 }
 
-.msg {
+.welcome .msg {
   position: absolute;
-  top: 5%;
+  top: 8%;
   left: 25%;
   font-family: "Libre Caslon Display", serif;
   font-size: 7rem;
-  height: 8rem;
-  width: 4rem;
+  width: 21rem;
+  animation: 0.8s ease-out 0.8s 1 slideInFromLeft;
+  animation-fill-mode: forwards;
+  font-weight: normal;
+  backface-visibility: hidden;
+  opacity: 0;
+}
+
+@media (max-width: 75em) {
+  .welcome .msg {
+    left: 20%;
+  }
+}
+
+@media (max-width: 56.25em) {
+  .welcome .msg {
+    left: 12%;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .welcome {
+    background-position: 0rem 20rem;
+  }
+  .welcome .msg {
+    left: 8%;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-262%);
+  }
+
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
 }
