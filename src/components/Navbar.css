@@ -42,7 +42,7 @@ html {
   font-weight: 500;
   height: 7rem;
   margin: 5px 5px 0 5px;
-  background-color: rgb(7, 0, 44);
+  background-color: #2f2e41;
   border-radius: 20px;
   position: relative;
 }
@@ -142,14 +142,17 @@ html {
   color: white;
   padding: 10px;
   border-radius: 100px;
-  background: linear-gradient(-45deg, #ffa63d, #ff3d77, #338aff, #3cf0c5);
-  background-size: 600%;
+  background-color: #a2c8a1;
   animation: anime 16s linear infinite;
   transition: all 0.2s;
 }
 
 .navbar__button.signup:hover {
-  background-size: 100%;
+  transform: translateY(-2px);
+}
+
+.navbar__button.signup:active {
+  transform: translate(0) scale(0.98);
 }
 
 @keyframes anime {

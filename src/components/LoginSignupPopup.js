@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
+import { loginPopup, signupPopup, hidePopup } from "../actions";
 import "./LoginSignupPopup.css";
 
-const LoginSignupPopup = () => {
-  const [activePopup, setActivePopup] = useState("popup ");
-  const [visibility, setVisibility] = useState("visible");
-
+const LoginSignupPopup = (props) => {
+  const isVisible = props.popup.isVisible === true ? " visible" : "";
+  const rightPanelActive =
+    props.popup.rightPanelActive === true ? " right-panel-active" : "";
   return (
     <div
-      onClick={() => {
-        setVisibility("hidden");
-      }}
-      className={activePopup.concat(visibility)}
+      onClick={() => props.hidePopup()}
+      className={`popup${rightPanelActive}${isVisible}`}
     >
-      <div onClick={(e) => e.preventDefault()} className="popup__container">
+      <div onClick={(e) => e.stopPropagation()} className="popup__container">
+        <span onClick={() => props.hidePopup()} className="popup__close">
+          &times;
+        </span>
         <div className="popup__form login">
           <form>
             <h1>Login</h1>
@@ -20,7 +23,7 @@ const LoginSignupPopup = () => {
             <input type="password" placeholder="Password" />
             <button>Login</button>
             <button className="google">
-              <i class="fab fa-google"></i>
+              <i className="fab fa-google"></i>
               Login with Google
             </button>
           </form>
@@ -33,7 +36,7 @@ const LoginSignupPopup = () => {
             <input type="password" placeholder="Password" />
             <button>Signup</button>
             <button className="google">
-              <i class="fab fa-google"></i>
+              <i className="fab fa-google"></i>
               Sign up with Google
             </button>
           </form>
@@ -44,9 +47,7 @@ const LoginSignupPopup = () => {
               <h1>Welcome back!</h1>
               <p>Login if you already have an account</p>
               <button
-                onClick={() => {
-                  setActivePopup("popup ");
-                }}
+                onClick={() => props.loginPopup()}
                 className="ghost"
                 id="login"
               >
@@ -57,9 +58,7 @@ const LoginSignupPopup = () => {
               <h1>Don't have an account?</h1>
               <p>Enter your personal details and start tracking!</p>
               <button
-                onClick={() => {
-                  setActivePopup("popup right-panel-active ");
-                }}
+                onClick={() => props.signupPopup()}
                 className="ghost"
                 id="signup"
               >
@@ -73,4 +72,10 @@ const LoginSignupPopup = () => {
   );
 };
 
-export default LoginSignupPopup;
+const mapStateToProps = (state) => {
+  return { popup: state.popup };
+};
+
+export default connect(mapStateToProps, { loginPopup, signupPopup, hidePopup })(
+  LoginSignupPopup
+);

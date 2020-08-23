@@ -95,11 +95,38 @@
   box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.205);
 }
 
+@media (max-width: 600px) {
+  .popup__container {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+.popup__close {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  font-size: 3rem;
+  z-index: 500;
+  color: black;
+  cursor: pointer;
+}
+
+.popup__close:hover {
+  color: tomato;
+}
+
 .popup__form {
   position: absolute;
   top: 0;
   height: 100%;
   transition: all 0.6s ease-in-out;
+}
+
+@media (max-width: 600px) {
+  .popup__form {
+    height: 75%;
+  }
 }
 
 .popup__form form {
@@ -125,6 +152,16 @@
   width: 50%;
   z-index: 1;
   opacity: 0;
+}
+
+@media (max-width: 600px) {
+  .popup__form.login {
+    width: 100%;
+  }
+
+  .popup__form.signup {
+    width: 100%;
+  }
 }
 
 /* Move them both to the right but make signup visible */

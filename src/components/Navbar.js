@@ -1,7 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
+import { loginPopup, signupPopup } from "../actions";
 import "./Navbar.css";
 
-function renderLinks(isLoggedIn) {
+function renderLinks(isLoggedIn, props) {
   if (isLoggedIn === true) {
     return (
       <React.Fragment>
@@ -17,23 +19,37 @@ function renderLinks(isLoggedIn) {
     return (
       <React.Fragment>
         <div className="underbar-one solo">
-          <button className="navbar__button login">Login</button>
+          <button
+            onClick={() => props.loginPopup()}
+            className="navbar__button login"
+          >
+            Login
+          </button>
         </div>
-        <button className="navbar__button signup">Sign up</button>
+        <button
+          onClick={() => props.signupPopup()}
+          className="navbar__button signup"
+        >
+          Sign up
+        </button>
       </React.Fragment>
     );
   }
 }
 
-const Header = (props) => {
+const Navbar = (props) => {
   return (
     <nav className="navbar">
       <div className="navbar__holder home">
         <button className="navbar__button logo">Calorify</button>
       </div>
-      <div className="navbar__holder account">{renderLinks(false)}</div>
+      <div className="navbar__holder account">{renderLinks(false, props)}</div>
     </nav>
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return { popup: state.popup };
+};
+
+export default connect(mapStateToProps, { loginPopup, signupPopup })(Navbar);
