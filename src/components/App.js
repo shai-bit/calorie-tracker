@@ -1,13 +1,15 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import Header from "./Header";
-import Welcome from "./pages/Welcome";
+import Navbar from "./Navbar";
+import Welcome from "./Welcome";
+
+// USDA API key Us7ZJaxoFBR7bycuMkPqTKVbNghgOvXfyQu79nRi
 
 const App = () => {
   return (
     <React.Fragment>
       <BrowserRouter>
-        <Header />
+        <Navbar />
         <Route exact path="/" component={Welcome} />
       </BrowserRouter>
     </React.Fragment>

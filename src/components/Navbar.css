@@ -38,7 +38,8 @@ html {
 }
 
 .navbar {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
   height: 7rem;
   margin: 5px 5px 0 5px;
   background-color: rgb(7, 0, 44);
@@ -59,7 +60,7 @@ html {
 }
 
 .navbar__holder.account {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   position: absolute;
   top: 50%;
   right: 2%;
