@@ -22,7 +22,7 @@ const LoginSignupPopup = (props) => {
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
             <button>Login</button>
-            <button className="google">
+            <button className="google media">
               <i className="fab fa-google"></i>
               Login with Google
             </button>
@@ -35,7 +35,7 @@ const LoginSignupPopup = (props) => {
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
             <button>Signup</button>
-            <button className="google">
+            <button className="google media">
               <i className="fab fa-google"></i>
               Sign up with Google
             </button>

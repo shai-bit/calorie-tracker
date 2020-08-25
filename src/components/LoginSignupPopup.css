@@ -30,6 +30,12 @@
   width: 20rem;
 }
 
+@media (max-width: 600px) {
+  .popup p {
+    display: none;
+  }
+}
+
 .popup input {
   background-color: #eee;
   border: none;
@@ -37,6 +43,13 @@
   padding: 1.2rem 1.5rem;
   margin: 8px 0;
   width: 100%;
+}
+
+@media (max-width: 600px) {
+  .popup input {
+    height: 4rem;
+    border-radius: 10px;
+  }
 }
 
 .popup input:focus {
@@ -51,9 +64,15 @@
   font-size: 1.2rem;
   font-weight: bold;
   padding: 1.2rem 4.5rem;
-  text-transform: uppercase;
   margin: 1rem 1rem;
   transition: transform 80ms ease-in;
+}
+
+@media (max-width: 600px) {
+  .popup button,
+  .popup button.google.media {
+    font-size: 2rem;
+  }
 }
 
 .popup button:active {
@@ -99,6 +118,14 @@
   .popup__container {
     width: 100%;
     height: 100vh;
+    border-radius: 0;
+  }
+}
+
+@media (max-height: 400px) and (min-width: 600px) {
+  .popup__container {
+    max-width: 75%;
+    min-height: 40rem;
   }
 }
 
@@ -110,6 +137,12 @@
   z-index: 500;
   color: black;
   cursor: pointer;
+}
+@media (max-width: 600px) {
+  .popup__close {
+    font-size: 6rem;
+    right: 2rem;
+  }
 }
 
 .popup__close:hover {
@@ -125,7 +158,13 @@
 
 @media (max-width: 600px) {
   .popup__form {
+    top: 20%;
     height: 75%;
+    transition: none;
+  }
+
+  .popup__form h1 {
+    font-size: 4rem;
   }
 }
 
@@ -155,10 +194,7 @@
 }
 
 @media (max-width: 600px) {
-  .popup__form.login {
-    width: 100%;
-  }
-
+  .popup__form.login,
   .popup__form.signup {
     width: 100%;
   }
@@ -174,6 +210,24 @@
   opacity: 1;
   z-index: 5;
   animation: show 0.6s;
+}
+
+@media (max-width: 600px) {
+  .popup.right-panel-active .login {
+    transform: translate(0%, -25%);
+  }
+
+  .popup.right-panel-active .signup {
+    transform: translate(0%, -25%);
+    animation: none;
+  }
+}
+
+/* Animation fix */
+@media (max-height: 430px) and (min-width: 600px) {
+  .popup.right-panel-active .signup {
+    animation: none;
+  }
 }
 
 @keyframes show {
@@ -202,8 +256,23 @@
   transition: transform 0.6s ease-in-out;
 }
 
+@media (max-width: 600px) {
+  .popup__slides {
+    left: 0;
+    width: 100%;
+    height: 25%;
+    overflow: visible;
+  }
+}
+
 .popup.right-panel-active .popup__slides {
   transform: translateX(-100%);
+}
+
+@media (max-width: 600px) {
+  .popup.right-panel-active .popup__slides {
+    transform: translate(0%, 300%);
+  }
 }
 
 /* Actual slides occupy the same area as .popup__container
@@ -219,8 +288,21 @@ while slides viewport is 50% width */
   transition: transform 0.6s ease-in-out;
 }
 
+@media (max-width: 600px) {
+  .slides {
+    width: 100%;
+    left: 0;
+  }
+}
+
 .popup.right-panel-active .slides {
   transform: translateX(50%);
+}
+
+@media (max-width: 600px) {
+  .popup.right-panel-active .slides {
+    transform: translateX(0%);
+  }
 }
 
 .slides-panel {
@@ -238,9 +320,34 @@ while slides viewport is 50% width */
   transition: transform 0.6s ease-in-out;
 }
 
+@media (max-width: 600px) {
+  .slides-panel {
+    top: 20%;
+    width: 100%;
+    font-size: 1.4rem;
+  }
+
+  .slides-panel .ghost {
+    margin: 1rem 1rem;
+  }
+}
+
 .panel-left {
   left: 0;
   transform: translateX(-20%);
+}
+
+@media (max-width: 600px) {
+  .panel-left {
+    transform: translateX(0);
+    opacity: 0;
+    z-index: -1;
+  }
+  .panel-right {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 1;
+  }
 }
 
 .panel-left::before {
@@ -253,8 +360,22 @@ while slides viewport is 50% width */
   top: 45%;
 }
 
+@media (max-width: 600px) {
+  .panel-left::before,
+  .panel-right::before {
+    visibility: hidden;
+  }
+}
+
 .popup.right-panel-active .panel-left {
   transform: translateX(0%);
+}
+
+@media (max-width: 600px) {
+  .popup.right-panel-active .panel-left {
+    opacity: 1;
+    z-index: 1;
+  }
 }
 
 .panel-right {
@@ -274,4 +395,17 @@ while slides viewport is 50% width */
 
 .popup.right-panel-active .panel-right {
   transform: translateX(20%);
+}
+
+@media (max-width: 600px) {
+  .popup.right-panel-active .panel-right {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .popup.right-panel-active .panel-right {
+    transform: translateX(0);
+  }
 }
