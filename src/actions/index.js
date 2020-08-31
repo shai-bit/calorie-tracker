@@ -1,17 +1,17 @@
 export const loginPopup = () => {
   return {
-    type: "LOGIN",
+    type: 'LOGIN',
   };
 };
 
 export const signupPopup = () => {
   return {
-    type: "SIGN_UP",
+    type: 'SIGN_UP',
   };
 };
 
 export const hidePopup = () => {
   return {
-    type: "HIDE_POPUP",
+    type: 'HIDE_POPUP',
   };
 };
