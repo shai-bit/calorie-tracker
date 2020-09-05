@@ -1,3 +1,5 @@
+import { LOGIN, SIGN_UP, HIDE_POPUP } from '../actions/types';
+
 const INITIAL_STATE = {
   isVisible: false,
   rightPanelActive: false,
@@ -5,13 +7,13 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "SIGN_UP":
+    case SIGN_UP:
       return { ...state, isVisible: true, rightPanelActive: true };
 
-    case "LOGIN":
+    case LOGIN:
       return { ...state, isVisible: true, rightPanelActive: false };
 
-    case "HIDE_POPUP":
+    case HIDE_POPUP:
       return { ...state, isVisible: false, rightPanelActive: false };
 
     default:

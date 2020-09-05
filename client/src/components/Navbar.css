@@ -38,7 +38,7 @@ html {
 }
 
 .navbar {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   height: 7rem;
   margin: 5px 5px 0 5px;
@@ -67,6 +67,12 @@ html {
   transform: translate(0, -50%);
 }
 
+.navbar__holder.account .wlc-msg {
+  display: inline-block;
+  color: white;
+  padding: 0 10px;
+}
+
 .underbar-one,
 .underbar-two {
   display: inline-block;
@@ -76,7 +82,7 @@ html {
 .underbar-one::after,
 .underbar-two::before,
 .underbar-two::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -4px;
   width: 0px;

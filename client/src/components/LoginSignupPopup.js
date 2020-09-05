@@ -1,12 +1,12 @@
-import React from "react";
-import { connect } from "react-redux";
-import { loginPopup, signupPopup, hidePopup } from "../actions";
-import "./LoginSignupPopup.css";
+import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import './LoginSignupPopup.css';
 
 const LoginSignupPopup = (props) => {
-  const isVisible = props.popup.isVisible === true ? " visible" : "";
+  const isVisible = props.popup.isVisible === true ? ' visible' : '';
   const rightPanelActive =
-    props.popup.rightPanelActive === true ? " right-panel-active" : "";
+    props.popup.rightPanelActive === true ? ' right-panel-active' : '';
   return (
     <div
       onClick={() => props.hidePopup()}
@@ -22,10 +22,9 @@ const LoginSignupPopup = (props) => {
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
             <button>Login</button>
-            <button className="google media">
-              <i className="fab fa-google"></i>
-              Login with Google
-            </button>
+            <a className="google-link" href="/auth/google">
+              <i className="fab fa-google"></i>Login with Google
+            </a>
           </form>
         </div>
         <div className="popup__form signup">
@@ -34,11 +33,10 @@ const LoginSignupPopup = (props) => {
             <input type="text" placeholder="Name" />
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
-            <button>Signup</button>
-            <button className="google media">
-              <i className="fab fa-google"></i>
-              Sign up with Google
-            </button>
+            <button>Sign up</button>
+            <a className="google-link" href="/auth/google">
+              <i className="fab fa-google"></i>Sign up with Google
+            </a>
           </form>
         </div>
         <div className="popup__slides">
@@ -76,6 +74,4 @@ const mapStateToProps = (state) => {
   return { popup: state.popup };
 };
 
-export default connect(mapStateToProps, { loginPopup, signupPopup, hidePopup })(
-  LoginSignupPopup
-);
+export default connect(mapStateToProps, actions)(LoginSignupPopup);

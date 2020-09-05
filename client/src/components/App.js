@@ -1,19 +1,26 @@
-import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import Navbar from "./Navbar";
-import Welcome from "./Welcome";
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
-// USDA API key Us7ZJaxoFBR7bycuMkPqTKVbNghgOvXfyQu79nRi
+import Navbar from './Navbar';
+import Welcome from './Welcome';
+import Dashboard from './Dashboard';
 
-const App = () => {
-  return (
-    <React.Fragment>
+class App extends Component {
+  componentDidMount() {
+    this.props.fetchUser();
+  }
+
+  render() {
+    return (
       <BrowserRouter>
         <Navbar />
         <Route exact path="/" component={Welcome} />
+        <Route exact path="/dashboard" component={Dashboard} />
       </BrowserRouter>
-    </React.Fragment>
-  );
-};
+    );
+  }
+}
 
-export default App;
+export default connect(null, actions)(App);
