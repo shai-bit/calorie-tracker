@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import './Navbar.css';
 
 class Navbar extends Component {
-  renderLinks(props) {
+  setHome(props) {
     switch (props.auth) {
       case null:
+        return '/';
+      case false:
+        return '/';
+      default:
+        return '/dashboard';
+    }
+  }
+
+  renderLinks(props) {
+    switch (props.auth) {
+      // Loading
+      case null:
         return;
+      //Not logged in
       case false:
         return (
           <React.Fragment>
@@ -27,7 +41,7 @@ class Navbar extends Component {
             </button>
           </React.Fragment>
         );
-
+      // Logged in
       default:
         return (
           <React.Fragment>
@@ -50,7 +64,9 @@ class Navbar extends Component {
     return (
       <nav className="navbar">
         <div className="navbar__holder home">
-          <button className="navbar__button logo">Calorify</button>
+          <Link to={this.setHome(this.props)}>
+            <button className="navbar__button logo">Calorify</button>
+          </Link>
         </div>
         <div className="navbar__holder account">
           {this.renderLinks(this.props)}

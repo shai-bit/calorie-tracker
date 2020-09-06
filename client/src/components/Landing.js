@@ -1,6 +1,6 @@
-import React from "react";
-import LoginSignupPopup from "./LoginSignupPopup";
-import "./Welcome.css";
+import React from 'react';
+import LoginSignupPopup from './LoginSignupPopup';
+import './Landing.css';
 
 const Welcome = () => {
   return (

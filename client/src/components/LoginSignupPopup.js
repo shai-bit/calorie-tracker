@@ -1,12 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import './LoginSignupPopup.css';
 
 const LoginSignupPopup = (props) => {
+  const [loginForm, setloginForm] = useState({ email: '', password: '' });
+  const [signUpForm, setSignUpForm] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+
   const isVisible = props.popup.isVisible === true ? ' visible' : '';
   const rightPanelActive =
     props.popup.rightPanelActive === true ? ' right-panel-active' : '';
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log(loginForm);
+  };
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    console.log(signUpForm);
+  };
+
   return (
     <div
       onClick={() => props.hidePopup()}
@@ -17,22 +35,57 @@ const LoginSignupPopup = (props) => {
           &times;
         </span>
         <div className="popup__form login">
-          <form>
+          <form onSubmit={handleLogin}>
             <h1>Login</h1>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button>Login</button>
+            <input
+              type="email"
+              placeholder="Email"
+              value={loginForm.email}
+              onChange={(e) =>
+                setloginForm({ ...loginForm, email: e.target.value })
+              }
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={loginForm.password}
+              onChange={(e) =>
+                setloginForm({ ...loginForm, password: e.target.value })
+              }
+            />
+            <button type="submit">Login</button>
             <a className="google-link" href="/auth/google">
               <i className="fab fa-google"></i>Login with Google
             </a>
           </form>
         </div>
         <div className="popup__form signup">
-          <form>
+          <form onSubmit={handleSignUp}>
             <h1>Create an account</h1>
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input
+              type="text"
+              placeholder="Name"
+              value={signUpForm.name}
+              onChange={(e) =>
+                setSignUpForm({ ...signUpForm, name: e.target.value })
+              }
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={signUpForm.email}
+              onChange={(e) =>
+                setSignUpForm({ ...signUpForm, email: e.target.value })
+              }
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={signUpForm.password}
+              onChange={(e) =>
+                setSignUpForm({ ...signUpForm, password: e.target.value })
+              }
+            />
             <button>Sign up</button>
             <a className="google-link" href="/auth/google">
               <i className="fab fa-google"></i>Sign up with Google

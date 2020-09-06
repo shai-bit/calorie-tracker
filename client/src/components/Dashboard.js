@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Dashboard extends Component {
@@ -6,6 +7,9 @@ class Dashboard extends Component {
     switch (props.auth) {
       case null:
         return;
+
+      case false:
+        return <Redirect to="/" />;
       default:
         return `Welcome back ${props.auth.name}!`;
     }

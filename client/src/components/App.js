@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Navbar from './Navbar';
-import Welcome from './Welcome';
+import Landing from './Landing';
 import Dashboard from './Dashboard';
+import NotFound from './NotFound';
 
 class App extends Component {
   componentDidMount() {
@@ -15,9 +16,14 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Navbar />
-        <Route exact path="/" component={Welcome} />
-        <Route exact path="/dashboard" component={Dashboard} />
+        <div>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
       </BrowserRouter>
     );
   }
