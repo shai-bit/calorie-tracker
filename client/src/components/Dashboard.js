@@ -7,7 +7,6 @@ class Dashboard extends Component {
     switch (props.auth) {
       case null:
         return;
-
       case false:
         return <Redirect to="/" />;
       default:

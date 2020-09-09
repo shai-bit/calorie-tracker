@@ -17,12 +17,12 @@ const LoginSignupPopup = (props) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(loginForm);
+    props.localLogin(loginForm);
   };
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    console.log(signUpForm);
+    props.createUser(signUpForm);
   };
 
   return (
@@ -124,7 +124,7 @@ const LoginSignupPopup = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { popup: state.popup };
+  return { popup: state.popup, login: state.login, signup: state.signup };
 };
 
 export default connect(mapStateToProps, actions)(LoginSignupPopup);
