@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch, Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import NotFound from './NotFound';
+import history from '../history';
 
 class App extends Component {
   componentDidMount() {
@@ -15,7 +16,7 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <div>
           <Navbar />
           <Switch>
@@ -24,7 +25,7 @@ class App extends Component {
             <Route component={NotFound} />
           </Switch>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

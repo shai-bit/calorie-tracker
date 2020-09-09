@@ -48,7 +48,7 @@ passport.use(
   new CustomStrategy(async (req, done) => {
     const existingUser = await User.findOne({ email: req.body.email });
     if (!existingUser) {
-      return done(null, 'no-user');
+      return done(null, 'not-found');
     }
     const isValid = await bcrypt.compare(
       req.body.password,

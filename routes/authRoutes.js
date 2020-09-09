@@ -21,28 +21,31 @@ module.exports = (app) => {
     }
   );
 
+  // Local signup
   app.post('/api/create_user', async (req, res) => {
     const existingUser = await User.findOne({ email: req.body.email });
     // User already exists
     if (existingUser) {
       return res.send('user-exists');
     }
-    // Hash password and create User
-    bcrypt.hash(req.body.password, saltRounds, async function (err, hash) {
-      const user = await new User({
-        name: req.body.name,
-        email: req.body.email,
-        password: hash,
-      }).save();
+    // Hash password, create user, login user
+    const hash = await bcrypt.hash(req.body.password, saltRounds);
+    const user = await new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: hash,
+    }).save();
+    req.login(user, () => {
+      return res.send('user-created-loginsuccess');
     });
-    return res.send('user-created');
   });
 
+  // Local login
   app.post(
     '/api/login',
     passport.authenticate('custom-login', { session: false }),
     (req, res) => {
-      if (req.user === 'no-user' || req.user === 'invalid-pass') {
+      if (req.user === 'not-found' || req.user === 'invalid-pass') {
         return res.send(req.user);
       }
       req.login(req.user, () => {

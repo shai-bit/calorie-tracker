@@ -77,7 +77,7 @@ class Navbar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { popup: state.popup, auth: state.auth };
+  return { popup: state.popup, auth: state.auth, login: state.login };
 };
 
 export default connect(mapStateToProps, actions)(Navbar);

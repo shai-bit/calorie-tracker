@@ -11,6 +11,7 @@ const LoginSignupPopup = (props) => {
     password: '',
   });
 
+  // Dynamic classes for popup
   const isVisible = props.popup.isVisible === true ? ' visible' : '';
   const rightPanelActive =
     props.popup.rightPanelActive === true ? ' right-panel-active' : '';
@@ -24,6 +25,13 @@ const LoginSignupPopup = (props) => {
     e.preventDefault();
     props.createUser(signUpForm);
   };
+
+  // Dynamic class for signup alert
+  const signupAlert = props.signup === 'user-exists' ? '' : 'hidden';
+
+  // Dynamic classes for login alerts
+  const loginNotFound = props.login === 'not-found' ? '' : 'hidden';
+  const loginInvalidPass = props.login === 'invalid-pass' ? '' : 'hidden';
 
   return (
     <div
@@ -53,6 +61,12 @@ const LoginSignupPopup = (props) => {
                 setloginForm({ ...loginForm, password: e.target.value })
               }
             />
+            <div className={`popup__form--alert ${loginNotFound}`}>
+              Invalid username
+            </div>
+            <div className={`popup__form--alert ${loginInvalidPass}`}>
+              Invalid password
+            </div>
             <button type="submit">Login</button>
             <a className="google-link" href="/auth/google">
               <i className="fab fa-google"></i>Login with Google
@@ -86,6 +100,9 @@ const LoginSignupPopup = (props) => {
                 setSignUpForm({ ...signUpForm, password: e.target.value })
               }
             />
+            <div className={`popup__form--alert ${signupAlert}`}>
+              Sorry, user already exists!
+            </div>
             <button>Sign up</button>
             <a className="google-link" href="/auth/google">
               <i className="fab fa-google"></i>Sign up with Google

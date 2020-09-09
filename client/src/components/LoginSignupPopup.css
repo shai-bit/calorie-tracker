@@ -199,6 +199,22 @@
   }
 }
 
+.popup__form--alert {
+  font-size: 1.5rem;
+  background-color: rgba(236, 83, 83, 0.623);
+  border-radius: 5px;
+  width: 100%;
+  margin: 0 0 1rem 0;
+}
+@media (max-width: 600px) {
+  .popup__form--alert {
+    font-size: 2rem;
+  }
+}
+.hidden {
+  display: none;
+}
+
 /* Move them both to the right but make signup visible */
 .popup.right-panel-active .login {
   transform: translateX(100%);
