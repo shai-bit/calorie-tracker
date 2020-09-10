@@ -53,6 +53,9 @@ const LoginSignupPopup = (props) => {
                 setloginForm({ ...loginForm, email: e.target.value })
               }
             />
+            <div className={`popup__form--alert ${loginNotFound}`}>
+              Invalid username
+            </div>
             <input
               type="password"
               placeholder="Password"
@@ -61,9 +64,6 @@ const LoginSignupPopup = (props) => {
                 setloginForm({ ...loginForm, password: e.target.value })
               }
             />
-            <div className={`popup__form--alert ${loginNotFound}`}>
-              Invalid username
-            </div>
             <div className={`popup__form--alert ${loginInvalidPass}`}>
               Invalid password
             </div>
@@ -92,6 +92,9 @@ const LoginSignupPopup = (props) => {
                 setSignUpForm({ ...signUpForm, email: e.target.value })
               }
             />
+            <div className={`popup__form--alert ${signupAlert}`}>
+              Sorry, user already exists!
+            </div>
             <input
               type="password"
               placeholder="Password"
@@ -100,9 +103,6 @@ const LoginSignupPopup = (props) => {
                 setSignUpForm({ ...signUpForm, password: e.target.value })
               }
             />
-            <div className={`popup__form--alert ${signupAlert}`}>
-              Sorry, user already exists!
-            </div>
             <button>Sign up</button>
             <a className="google-link" href="/auth/google">
               <i className="fab fa-google"></i>Sign up with Google
