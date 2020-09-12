@@ -10,6 +10,7 @@ const LoginSignupPopup = (props) => {
     email: '',
     password: '',
   });
+  const [signupAlert, setSignupAlert] = useState(false);
 
   // Dynamic classes for popup
   const isVisible = props.popup.isVisible === true ? ' visible' : '';
@@ -22,12 +23,23 @@ const LoginSignupPopup = (props) => {
   };
 
   const handleSignUp = (e) => {
+    // If missing field alert
     e.preventDefault();
+    if (
+      signUpForm.name === '' ||
+      signUpForm.password === '' ||
+      signUpForm.email === ''
+    ) {
+      setSignupAlert(true);
+      return;
+    }
+    setSignupAlert(false);
     props.createUser(signUpForm);
   };
 
-  // Dynamic class for signup alert
-  const signupAlert = props.signup === 'user-exists' ? '' : 'hidden';
+  // Dynamic classes for signup alerts
+  const userExists = props.signup === 'user-exists' ? '' : 'hidden';
+  const missingInput = signupAlert ? '' : 'hidden';
 
   // Dynamic classes for login alerts
   const loginNotFound = props.login === 'not-found' ? '' : 'hidden';
@@ -92,7 +104,7 @@ const LoginSignupPopup = (props) => {
                 setSignUpForm({ ...signUpForm, email: e.target.value })
               }
             />
-            <div className={`popup__form--alert ${signupAlert}`}>
+            <div className={`popup__form--alert ${userExists}`}>
               Sorry, user already exists!
             </div>
             <input
@@ -103,7 +115,10 @@ const LoginSignupPopup = (props) => {
                 setSignUpForm({ ...signUpForm, password: e.target.value })
               }
             />
-            <button>Sign up</button>
+            <div className={`popup__form--alert ${missingInput}`}>
+              Please fill all fields.
+            </div>
+            <button type="submit">Sign up</button>
             <a className="google-link" href="/auth/google">
               <i className="fab fa-google"></i>Sign up with Google
             </a>

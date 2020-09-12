@@ -51,3 +51,10 @@ export const localLogin = (loginForm) => async (dispatch) => {
   // Possible payloads: 'not-found', 'invalid-pass', 'login-success'
   dispatch({ type: actions.LOCAL_LOGIN, payload: res.data });
 };
+
+export const getDate = (date) => {
+  return {
+    type: actions.SET_DATE,
+    payload: date,
+  };
+};
