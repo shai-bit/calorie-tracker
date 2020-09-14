@@ -1,7 +1,7 @@
 .dashboard {
   position: relative;
   height: 87vh;
-  background-color: #dfd7d7;
+  background-color: #fff;
   font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
 }
@@ -11,6 +11,7 @@
   position: absolute;
   top: 10px;
   left: 10px;
+  font-size: 4rem;
   font-weight: 300;
 }
 
@@ -23,6 +24,10 @@
   position: absolute;
   top: 60px;
   left: 10px;
+}
+
+.dashboard__calendar--date {
+  font-size: 2rem;
 }
 
 .dashboard__calendar i {
@@ -173,4 +178,53 @@
 
 .react-calendar abbr {
   text-decoration: none;
+}
+
+.dashboard__consumption {
+  position: relative;
+  width: 60%;
+  top: 20%;
+  left: 1%;
+  border-radius: 10px;
+}
+
+.dashboard__consumption--time {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin: 0 0 0 3%;
+}
+
+.dashboard__consumption--item {
+  display: inline-block;
+  width: 45%;
+  height: 200px;
+  border-radius: 10px;
+  margin: 0 4px;
+}
+
+.bkfast {
+  background: linear-gradient(
+    153deg,
+    rgba(179, 134, 200, 1) 0%,
+    rgba(255, 185, 160, 1) 100%
+  );
+}
+
+.lunch {
+  background: linear-gradient(
+    153deg,
+    rgba(163, 226, 237, 1) 0%,
+    rgba(81, 172, 220, 1) 100%
+  );
+}
+
+.dinner {
+  background: linear-gradient(
+    153deg,
+    rgba(86, 133, 199, 1) 0%,
+    rgba(39, 62, 109, 1) 100%
+  );
+}
+
+.snacks {
 }
