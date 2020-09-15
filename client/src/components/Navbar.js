@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import './Navbar.css';
 
+import calorifyLogo from '../resources/calorify-logo.svg';
+
 class Navbar extends Component {
   setHome(props) {
     switch (props.auth) {
@@ -64,7 +66,8 @@ class Navbar extends Component {
     return (
       <nav className="navbar">
         <div className="navbar__holder home">
-          <Link to={this.setHome(this.props)}>
+          <img className="navbar__logo" src={calorifyLogo} />
+          <Link className="navbar__link" to={this.setHome(this.props)}>
             <button className="navbar__button logo">Calorify</button>
           </Link>
         </div>

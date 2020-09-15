@@ -38,12 +38,10 @@ html {
 }
 
 .navbar {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  height: 7rem;
-  margin: 5px 5px 0 5px;
-  background-color: #2f2e41;
-  border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  height: 13vh;
+  background-color: #fff;
   position: relative;
 }
 
@@ -55,18 +53,28 @@ html {
   font-size: 2.5rem;
   position: absolute;
   top: 50%;
-  left: 2%;
+  left: 10%;
   transform: translate(0, -50%);
 }
 
 .navbar__holder.account {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   position: absolute;
   top: 50%;
-  right: 2%;
+  right: 10%;
   transform: translate(0, -50%);
 }
+@media (max-width: 600px) {
+  .navbar__holder.home {
+    top: 60%;
+    left: 3%;
+  }
 
+  .navbar__holder.account {
+    top: 60%;
+    right: 3%;
+  }
+}
 .navbar__holder.account .wlc-msg {
   display: inline-block;
   color: white;
@@ -90,7 +98,7 @@ html {
   margin: 5px 0 0;
   transition: all 0.2s ease-in-out;
   opacity: 0;
-  background-color: #e9c069;
+  background-color: #ff5656;
 }
 
 .underbar-one.solo::before,
@@ -136,7 +144,7 @@ html {
 .navbar__button.settings,
 .navbar__button.logout,
 .navbar__button.login {
-  color: white;
+  color: black;
 }
 
 .navbar__button.logout,
@@ -148,7 +156,7 @@ html {
   color: white;
   padding: 10px;
   border-radius: 100px;
-  background-color: #a2c8a1;
+  background-color: #74a3aa;
   animation: anime 16s linear infinite;
   transition: all 0.2s;
 }
@@ -170,5 +178,22 @@ html {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+.navbar__link {
+  position: absolute;
+  top: 25%;
+  left: 65px;
+}
+
+@media (max-width: 600px) {
+  .navbar__logo {
+    height: 40px;
+    width: 40px;
+  }
+
+  .navbar__link {
+    left: 55px;
   }
 }

@@ -1,24 +1,22 @@
 .welcome {
   position: relative;
   height: 87vh;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  background-color: rgb(223, 215, 215);
-  background-image: url(../resources/home-img.svg);
+  background-color: #fff;
+  background-image: url(../resources/landing-img.svg);
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: top center;
+  background-position: bottom;
   animation: 0.8s ease-out 0s 1 slideInFromRight;
   backface-visibility: hidden;
 }
 
 .welcome .msg {
   position: absolute;
-  top: 8%;
-  left: 25%;
-  font-family: "Libre Caslon Display", serif;
-  font-size: 7rem;
-  width: 21rem;
+  top: 9%;
+  left: 21%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 4.8rem;
+  width: 28rem;
   animation: 0.8s ease-out 0.8s 1 slideInFromLeft;
   animation-fill-mode: forwards;
   font-weight: normal;
@@ -26,6 +24,26 @@
   opacity: 0;
 }
 
+.joinnow-button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  padding: 10px;
+  color: white;
+  background-color: #74a3aa;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.joinnow-button:hover {
+  transform: translateY(-2px);
+}
+
+.joinnow-button:active {
+  transform: translate(0) scale(0.98);
+}
 @media (max-width: 75em) {
   .welcome .msg {
     left: 20%;
@@ -40,10 +58,13 @@
 
 @media (max-width: 37.5em) {
   .welcome {
-    background-position: 0rem 20rem;
+    background-position: 57% 100px;
+    background-image: url(../resources/landing-img-mov.svg);
+    background-size: 403%;
   }
   .welcome .msg {
     left: 8%;
+    top: 13%;
   }
 }
 
