@@ -57,6 +57,10 @@ html {
   transform: translate(0, -50%);
 }
 
+.navbar__holder.home.spaced {
+  left: 3%;
+}
+
 .navbar__holder.account {
   font-size: 1.8rem;
   position: absolute;
@@ -64,14 +68,18 @@ html {
   right: 10%;
   transform: translate(0, -50%);
 }
+
+.navbar__holder.account.spaced {
+  right: 3%;
+}
 @media (max-width: 600px) {
   .navbar__holder.home {
-    top: 60%;
+    top: 50%;
     left: 3%;
   }
 
   .navbar__holder.account {
-    top: 60%;
+    top: 50%;
     right: 3%;
   }
 }
@@ -81,24 +89,27 @@ html {
   padding: 0 10px;
 }
 
-.underbar-one,
-.underbar-two {
+.underbar-one {
   display: inline-block;
 }
 
 .underbar-one::before,
-.underbar-one::after,
-.underbar-two::before,
-.underbar-two::after {
+.underbar-one::after {
   content: '';
   position: absolute;
+  left: 0;
   bottom: -4px;
   width: 0px;
   height: 2px;
-  margin: 5px 0 0;
   transition: all 0.2s ease-in-out;
   opacity: 0;
   background-color: #ff5656;
+}
+
+.underbar-one:hover::before,
+.underbar-one:hover::after {
+  width: 79%;
+  opacity: 1;
 }
 
 .underbar-one.solo::before,
@@ -106,27 +117,9 @@ html {
   bottom: 6px;
 }
 
-.underbar-one::before,
-.underbar-one::after {
-  left: 0;
-}
-
-.underbar-two::before,
-.underbar-two::after {
-  left: 38%;
-}
-
-.underbar-one:hover::before,
-.underbar-one:hover::after {
-  width: 29%;
-  opacity: 1;
-}
-
-.underbar-two:hover::before,
-.underbar-two:hover::after {
-  left: 38%;
-  width: 63%;
-  opacity: 1;
+.underbar-one.solo:hover::before,
+.underbar-one.solo:hover::after {
+  width: 32%;
 }
 
 /* Clears up default button style */

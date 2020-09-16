@@ -8,17 +8,18 @@ const CurrentDate = (props) => {
   const [calendarVisibility, setCalendarVisibility] = useState(false);
   const showCalendar = calendarVisibility ? '' : 'hidden';
   const calendarIcon = calendarVisibility ? 'minus' : 'plus';
+  const getDate = props.getDate;
   // If calendar value changes, change string date in redux
   useEffect(() => {
-    props.getDate(getStringDate(value));
-  }, [value]);
+    getDate(getStringDate(value));
+  }, [value, getDate]);
 
   return (
     <div className="dashboard__calendar">
       <h2 className="dashboard__calendar--date">
         {value.toDateString()}
         <i
-          class={`far fa-calendar-${calendarIcon}`}
+          className={`far fa-calendar-${calendarIcon}`}
           onClick={() => setCalendarVisibility(!calendarVisibility)}
         />
       </h2>

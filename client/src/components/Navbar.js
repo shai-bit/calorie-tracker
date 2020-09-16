@@ -7,6 +7,7 @@ import './Navbar.css';
 import calorifyLogo from '../resources/calorify-logo.svg';
 
 class Navbar extends Component {
+  // static spaced = props.auth
   setHome(props) {
     switch (props.auth) {
       case null:
@@ -46,32 +47,27 @@ class Navbar extends Component {
       // Logged in
       default:
         return (
-          <React.Fragment>
-            <div className="underbar-one">
-              <a href="/api/logout">
-                <button className="navbar__button logout">Log out</button>
-              </a>
-            </div>
-            <div className="underbar-two">
-              <button className="navbar__button settings">
-                Account settings
-              </button>
-            </div>
-          </React.Fragment>
+          <div className="underbar-one">
+            <a href="/api/logout">
+              <button className="navbar__button logout">Log out</button>
+            </a>
+          </div>
         );
     }
   }
 
   render() {
+    const spaced =
+      this.props.auth === false ? '' : this.props.auth === null ? '' : 'spaced';
     return (
       <nav className="navbar">
-        <div className="navbar__holder home">
-          <img className="navbar__logo" src={calorifyLogo} />
+        <div className={`navbar__holder home ${spaced}`}>
+          <img className="navbar__logo" src={calorifyLogo} alt="logo" />
           <Link className="navbar__link" to={this.setHome(this.props)}>
             <button className="navbar__button logo">Calorify</button>
           </Link>
         </div>
-        <div className="navbar__holder account">
+        <div className={`navbar__holder account ${spaced}`}>
           {this.renderLinks(this.props)}
         </div>
       </nav>

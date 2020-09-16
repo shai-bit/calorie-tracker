@@ -2,16 +2,16 @@
   position: relative;
   height: 87vh;
   background-color: #fff;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
 }
 
 .dashboard__header {
   margin: 0 10px;
   position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 4rem;
+  top: 0px;
+  left: 3.5%;
+  font-size: 3rem;
   font-weight: 300;
 }
 
@@ -22,8 +22,8 @@
 .dashboard__calendar {
   margin: 10px 10px;
   position: absolute;
-  top: 60px;
-  left: 10px;
+  top: 5.5%;
+  left: 3.5%;
 }
 
 .dashboard__calendar--date {
@@ -31,9 +31,9 @@
 }
 
 .dashboard__calendar i {
-  font-size: 0.5em;
+  font-size: 1.6rem;
   position: absolute;
-  top: 40%;
+  top: 16%;
   left: 105%;
 }
 
@@ -47,15 +47,17 @@
 
 .react-calendar {
   width: 350px;
-  background: white;
-  border-radius: 30px;
-  font-family: 'Poppins', sans-serif;
+  background: #fbfbfb;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   line-height: 1.125em;
   position: absolute;
-  top: 220px;
-  left: 200px;
+  top: 619%;
+  left: 225%;
   transform: translate(-50%, -50%);
+  z-index: 1;
 }
 .react-calendar--doubleView {
   width: 700px;
@@ -81,7 +83,7 @@
   border: 0;
   border-radius: 10px;
   outline: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 .react-calendar button:enabled:hover {
   cursor: pointer;
@@ -96,7 +98,7 @@
 }
 .react-calendar__navigation__label {
   font-size: 2rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
 .react-calendar__navigation__arrow {
@@ -180,51 +182,90 @@
   text-decoration: none;
 }
 
-.dashboard__consumption {
+.consumption {
   position: relative;
   width: 60%;
+  height: 79%;
   top: 20%;
-  left: 1%;
+  left: 3.5%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-content: space-between;
+}
+
+@media (max-width: 600px) {
+  .consumption {
+    width: 100%;
+    left: 0%;
+  }
+}
+
+.consumption__card {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  width: 49%;
+  height: 49%;
+  overflow: auto;
+  flex-basis: auto;
   border-radius: 10px;
 }
 
-.dashboard__consumption--time {
+@media (max-width: 600px) {
+  .consumption__card {
+    width: 90%;
+    height: 24%;
+  }
+}
+
+.bkfast {
+  background-color: #ffd571;
+}
+
+.lunch {
+  background-color: #bbd196;
+}
+
+.dinner {
+  background-color: #56556e;
+}
+
+.snacks {
+  background-color: #dddddd;
+}
+
+.consumption__card--header {
+  position: relative;
+  top: 4%;
   font-size: 1.7rem;
   font-weight: 600;
   margin: 0 0 0 3%;
 }
 
-.dashboard__consumption--item {
-  display: inline-block;
-  width: 45%;
-  height: 200px;
-  border-radius: 10px;
-  margin: 0 4px;
+.consumption__card--header span {
+  position: absolute;
+  font-size: 3.5rem;
+  top: -72%;
+  right: 2%;
 }
 
-.bkfast {
-  background: linear-gradient(
-    153deg,
-    rgba(179, 134, 200, 1) 0%,
-    rgba(255, 185, 160, 1) 100%
-  );
+@media (max-width: 600px) {
+  .consumption__card--header span {
+    top: -50%;
+  }
 }
 
-.lunch {
-  background: linear-gradient(
-    153deg,
-    rgba(163, 226, 237, 1) 0%,
-    rgba(81, 172, 220, 1) 100%
-  );
+.consumption__card--header span:hover {
+  color: #ff5656;
 }
 
-.dinner {
-  background: linear-gradient(
-    153deg,
-    rgba(86, 133, 199, 1) 0%,
-    rgba(39, 62, 109, 1) 100%
-  );
+.consumption__card--list {
+  margin: 1rem 0 0 0rem;
 }
 
-.snacks {
+.consumption__card--item {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
 }

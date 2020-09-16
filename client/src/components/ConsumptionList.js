@@ -2,18 +2,65 @@ import React from 'react';
 
 const ConsumptionList = () => {
   return (
-    <div className="dashboard__consumption">
-      <div className="dashboard__consumption--item bkfast">
-        <h3 className="dashboard__consumption--time">Breakfast</h3>
+    <div className="consumption">
+      <div className="consumption__card bkfast">
+        <div className="consumption__card--header">
+          Breakfast<span>+</span>
+        </div>
+        <div className="consumption__card--body">
+          <ul className="consumption__card--list">
+            <li className="consumption__card--item">
+              Food <span className="calories">100</span>
+              <span className="quantity">2</span>
+            </li>
+            <li className="consumption__card--item">
+              Food <span className="calories">100</span>
+              <span className="quantity">2</span>
+            </li>
+            <li className="consumption__card--item">
+              Food <span className="calories">100</span>
+              <span className="quantity">2</span>
+            </li>
+            <li className="consumption__card--item">
+              Food <span className="calories">100</span>
+              <span className="quantity">2</span>
+            </li>
+            <li className="consumption__card--item">
+              Food <span className="calories">100</span>
+              <span className="quantity">2</span>
+            </li>
+            <li className="consumption__card--item">
+              Food <span className="calories">100</span>
+              <span className="quantity">2</span>
+            </li>
+            <li className="consumption__card--item">
+              Food <span className="calories">100</span>
+              <span className="quantity">2</span>
+            </li>
+            <li className="consumption__card--item">
+              Food <span className="calories">100</span>
+              <span className="quantity">2</span>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className="dashboard__consumption--item lunch">
-        <h3 className="dashboard__consumption--time">Lunch</h3>
+      <div className="consumption__card lunch">
+        <div className="consumption__card--header">
+          Lunch<span>+</span>
+        </div>
+        <div className="consumption__card--body"></div>
       </div>
-      <div className="dashboard__consumption--item dinner">
-        <h3 className="dashboard__consumption--time">Dinner</h3>
+      <div className="consumption__card dinner">
+        <div className="consumption__card--header">
+          Dinner<span>+</span>
+        </div>
+        <div className="consumption__card--body"></div>
       </div>
-      <div className="dashboard__consumption--item snacks">
-        <h3 className="dashboard__consumption--time">Snacks</h3>
+      <div className="consumption__card snacks">
+        <div className="consumption__card--header">
+          Snacks<span>+</span>
+        </div>
+        <div className="consumption__card--body"></div>
       </div>
     </div>
   );

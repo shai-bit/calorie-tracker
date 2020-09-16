@@ -64,7 +64,8 @@
   }
   .welcome .msg {
     left: 8%;
-    top: 13%;
+    top: 8%;
+    width: 18rem;
   }
 }
 
