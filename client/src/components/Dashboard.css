@@ -35,6 +35,7 @@
   position: absolute;
   top: 16%;
   left: 105%;
+  cursor: pointer;
 }
 
 .fa-calendar-plus:hover {
@@ -47,17 +48,40 @@
 
 .react-calendar {
   width: 350px;
-  background: #fbfbfb;
+  background: #dff5ce;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   border-radius: 20px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   line-height: 1.125em;
   position: absolute;
-  top: 619%;
-  left: 225%;
+  top: 756%;
+  left: 126%;
   transform: translate(-50%, -50%);
   z-index: 1;
+}
+
+@media (max-width: 1200px) {
+  .react-calendar {
+    width: 330px;
+    top: 794%;
+  }
+}
+
+@media (max-width: 900px) {
+  .react-calendar {
+    width: 313px;
+    top: 878%;
+    left: 141%;
+  }
+}
+
+@media (max-width: 600px) {
+  .react-calendar {
+    width: 297px;
+    top: 878%;
+    left: 150%;
+  }
 }
 .react-calendar--doubleView {
   width: 700px;
@@ -245,6 +269,7 @@
 
 .consumption__card--header span {
   position: absolute;
+  cursor: pointer;
   font-size: 3.5rem;
   top: -72%;
   right: 2%;

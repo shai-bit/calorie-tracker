@@ -1,14 +1,20 @@
 import { combineReducers } from 'redux';
-import popupReducer from './popupReducer';
+import loginPopupReducer from './loginPopupReducer';
 import authReducer from './authReducer';
 import createUserReducer from './createUserReducer';
 import localSignupReducer from './localSignupReducer';
 import dateReducer from './dateReducer';
+import createPostReducer from './createPostReducer';
+import foodFormPopupReducer from './foodFormPopupReducer';
+import fetchPostsReducer from './fetchPostsReducer';
 
 export default combineReducers({
-  popup: popupReducer,
+  popup: loginPopupReducer,
   auth: authReducer,
   login: createUserReducer,
   signup: localSignupReducer,
   date: dateReducer,
+  post: createPostReducer,
+  foodForm: foodFormPopupReducer,
+  fetchedPosts: fetchPostsReducer,
 });

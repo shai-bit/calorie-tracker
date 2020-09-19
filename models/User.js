@@ -6,6 +6,14 @@ const userSchema = new Schema({
   name: String,
   email: String,
   password: String,
+  dates: [
+    {
+      date: String,
+      posts: [
+        { category: String, product: String, quantity: Number, kcal: Number },
+      ],
+    },
+  ],
 });
 
 mongoose.model('users', userSchema);

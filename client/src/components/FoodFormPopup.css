@@ -1,0 +1,115 @@
+.food-form {
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-color: rgba(51, 51, 51, 0.8);
+  z-index: 1000;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.food-form.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.food-form__container {
+  width: 54%;
+  min-height: 48rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: white;
+  /* background-image: url('../resources/eating.svg'); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.205);
+}
+
+.food-form__container span {
+  font-size: 4rem;
+}
+
+.food-form__form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.food-form__form h1 {
+  font-size: 3.9rem;
+  text-align: center;
+  left: 50%;
+}
+
+.food-form__form label {
+  font-size: 2rem;
+}
+
+.food-form__form input {
+  display: block;
+  background-color: #eee;
+  border: none;
+  border-radius: 3px;
+  padding: 1.2rem 1.5rem;
+  margin: 3px 0;
+  width: 88%;
+  font-family: 'Montserrat';
+}
+
+.food-form__form input:focus {
+  outline: none;
+  font-family: 'Montserrat';
+}
+
+.food-form__input.select {
+  margin-left: 10px;
+  border: none;
+  background-color: #eee;
+  font-family: 'Montserrat';
+}
+
+.food-form__form option:focus {
+  outline: none;
+}
+
+.food-form__form button {
+  position: relative;
+  left: 20%;
+  border-radius: 20px;
+  border: 1px solid #a2c8a1;
+  background-color: #a2c8a1;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  padding: 1.2rem 4.5rem;
+  transition: transform 80ms ease-in;
+}
+.food-form__form button:active {
+  transform: scale(0.95);
+}
+
+.food-form__form button:focus {
+  outline: none;
+}
+
+.food-form__alert {
+  font-size: 1.5rem;
+  background-color: rgba(236, 83, 83, 0.623);
+  border-radius: 5px;
+  width: 100%;
+  margin: 0 0 1rem 0;
+}
+
+.food-form__alert.hidden {
+  display: none;
+}

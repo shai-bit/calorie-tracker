@@ -52,9 +52,31 @@ export const localLogin = (loginForm) => async (dispatch) => {
   dispatch({ type: actions.LOCAL_LOGIN, payload: res.data });
 };
 
-export const getDate = (date) => {
+export const setDate = (date) => {
   return {
     type: actions.SET_DATE,
     payload: date,
   };
+};
+
+export const createPost = (post) => async (dispatch) => {
+  const res = await axios.post('/api/create_post', post);
+  dispatch({ type: actions.CREATE_POST, payload: res.data });
+};
+
+export const showFoodForm = (category) => {
+  return { type: actions.SHOW_FOODFORM_POPUP, payload: category };
+};
+
+export const hideFoodForm = () => {
+  return { type: actions.HIDE_FOODFORM_POPUP };
+};
+
+export const changeFoodCategory = (category) => {
+  return { type: actions.CHANGE_FOOD_CATEGORY, payload: category };
+};
+
+export const fetchPosts = (user) => async (dispatch) => {
+  const res = await axios.post('/api/fetch_posts', user);
+  dispatch({ type: actions.FETCH_POSTS, payload: res.data });
 };
