@@ -59,24 +59,56 @@ export const setDate = (date) => {
   };
 };
 
-export const createPost = (post) => async (dispatch) => {
-  const res = await axios.post('/api/create_post', post);
-  dispatch({ type: actions.CREATE_POST, payload: res.data });
+export const showFoodFormAdd = (form) => {
+  return {
+    type: actions.SHOW_FOODFORM_POPUP_ADD,
+    payload: { category: form.category, action: form.action },
+  };
 };
 
-export const showFoodForm = (category) => {
-  return { type: actions.SHOW_FOODFORM_POPUP, payload: category };
+export const showFoodFormUpdate = (form) => {
+  return {
+    type: actions.SHOW_FOODFORM_POPUP_UPDATE,
+    payload: { category: form.category, action: form.action, item: form.item },
+  };
 };
 
 export const hideFoodForm = () => {
   return { type: actions.HIDE_FOODFORM_POPUP };
 };
 
+export const createPost = (post) => async (dispatch) => {
+  const res = await axios.post('/api/create_post', post);
+  dispatch({ type: actions.CREATE_POST, payload: res.data });
+};
+
+export const updatePost = (updatedPost) => async (dispatch) => {
+  const res = await axios.post('/api/update_post', updatedPost);
+  dispatch({ type: actions.UPDATE_POST, payload: res.data });
+};
+
+export const deletePost = (postId) => async (dispatch) => {
+  const res = await axios.post('api/delete_post', postId);
+  dispatch({ type: actions.DELETE_POST, payload: res.data });
+};
+
+export const fetchPosts = (date) => async (dispatch) => {
+  const res = await axios.post('/api/fetch_posts', date);
+  dispatch({ type: actions.FETCH_POSTS, payload: res.data });
+};
+
 export const changeFoodCategory = (category) => {
   return { type: actions.CHANGE_FOOD_CATEGORY, payload: category };
 };
 
-export const fetchPosts = (user) => async (dispatch) => {
-  const res = await axios.post('/api/fetch_posts', user);
-  dispatch({ type: actions.FETCH_POSTS, payload: res.data });
+export const updateProductName = (name) => {
+  return { type: actions.UPDATE_PRODUCT_NAME, payload: name };
+};
+
+export const updateProductKcal = (kcal) => {
+  return { type: actions.UPDATE_PRODUCT_KCAL, payload: kcal };
+};
+
+export const updateProductQuantity = (quantity) => {
+  return { type: actions.UPDATE_PRODUCT_QUANTITY, payload: quantity };
 };

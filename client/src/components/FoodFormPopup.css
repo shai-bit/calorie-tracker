@@ -34,8 +34,26 @@
   box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.205);
 }
 
+@media (max-width: 900px) {
+  .food-form__container {
+    width: 80%;
+  }
+}
+
+@media (max-width: 600px) {
+  .food-form__container {
+    width: 80%;
+  }
+}
+
 .food-form__container span {
   font-size: 4rem;
+}
+
+@media (max-width: 600px) {
+  .food-form__container span {
+    font-size: 5rem;
+  }
 }
 
 .food-form__form {
@@ -100,6 +118,15 @@
 
 .food-form__form button:focus {
   outline: none;
+}
+
+.food-form__form button.update-delete {
+  left: -1%;
+}
+
+.food-form__form button.update-delete.delete {
+  border: 1px solid tomato;
+  background-color: tomato;
 }
 
 .food-form__alert {

@@ -262,7 +262,7 @@
 .consumption__card--header {
   position: relative;
   top: 4%;
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: 600;
   margin: 0 0 0 3%;
 }
@@ -271,7 +271,7 @@
   position: absolute;
   cursor: pointer;
   font-size: 3.5rem;
-  top: -72%;
+  top: -64%;
   right: 2%;
 }
 
@@ -285,12 +285,24 @@
   color: #ff5656;
 }
 
-.consumption__card--list {
-  margin: 1rem 0 0 0rem;
+.consumption__card--table {
+  padding: 1rem;
+  width: 100%;
 }
 
-.consumption__card--item {
-  display: flex;
-  flex-flow: row;
-  justify-content: space-around;
+.consumption__card--row {
+  cursor: pointer;
+}
+
+.consumption__card--row:hover {
+  color: #ff5656;
+}
+
+.table__header {
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+.table__header.product {
+  width: 65%;
 }
