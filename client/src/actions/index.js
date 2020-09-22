@@ -112,3 +112,7 @@ export const updateProductKcal = (kcal) => {
 export const updateProductQuantity = (quantity) => {
   return { type: actions.UPDATE_PRODUCT_QUANTITY, payload: quantity };
 };
+
+export const setCalorieSum = (sum) => {
+  return { type: actions.CALORIE_SUM, payload: sum };
+};

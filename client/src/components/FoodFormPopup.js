@@ -78,7 +78,7 @@ const FoodFormPopup = (props) => {
             &times;
           </span>
           <form className="food-form__form" onSubmit={handleUpdate}>
-            <h1>Update item</h1>
+            <h1 className="header-update">Update item</h1>
             <label htmlFor="time">Time:</label>
             <select
               id="time"
@@ -119,20 +119,34 @@ const FoodFormPopup = (props) => {
             <div className={`food-form__alert ${showAlert}`}>
               Please complete all inputs
             </div>
-            <button className="update-delete" type="submit">
-              Update
-            </button>
-            <button
-              className="update-delete delete"
-              type="submit"
-              onClick={(e) => handleDeletion(e)}
-            >
-              Delete
-            </button>
+            <div className="buttons-container">
+              <button className="update-delete update" type="submit">
+                Update
+              </button>
+              <button
+                className="update-delete delete"
+                type="submit"
+                onClick={(e) => handleDeletion(e)}
+              >
+                Delete
+              </button>
+            </div>
           </form>
         </div>
       );
     }
+  };
+
+  const handleInvalidInput = (props) => {
+    const { product, quantity, kcal } = props.foodForm;
+    if (
+      product === '' ||
+      quantity === 0 ||
+      quantity === '' ||
+      kcal === 0 ||
+      kcal === ''
+    )
+      return true;
   };
 
   const handleSubmit = async (e) => {
@@ -140,7 +154,7 @@ const FoodFormPopup = (props) => {
     const { category, product, quantity, kcal } = props.foodForm;
     const { date } = props;
     // If incomplete or invalid input show warning
-    if (product === '' || quantity === 0 || kcal === 0) {
+    if (handleInvalidInput(props)) {
       return setCompleteInput(false);
     }
     // Create post, fetch them again to re-render, close
@@ -154,10 +168,9 @@ const FoodFormPopup = (props) => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    const { product, quantity, kcal } = props.foodForm;
     const { date, foodForm } = props;
     // If incomplete or invalid input show warning
-    if (product === '' || quantity === 0 || kcal === 0) {
+    if (handleInvalidInput(props)) {
       return setCompleteInput(false);
     }
     // Update post, fetch them again for re-render, then close
@@ -178,7 +191,7 @@ const FoodFormPopup = (props) => {
   const handleNumericChange = (e, type) => {
     const updateFunction =
       type === 'kcal' ? props.updateProductKcal : props.updateProductQuantity;
-    if (isNaN(parseInt(e.target.value))) return updateFunction(0);
+    if (isNaN(parseInt(e.target.value))) return updateFunction('');
     updateFunction(parseInt(e.target.value));
   };
   // Hide popup, reset form, hide any alert

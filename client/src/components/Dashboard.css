@@ -36,6 +36,13 @@
   top: 16%;
   left: 105%;
   cursor: pointer;
+  z-index: 1001;
+}
+
+@media (max-width: 600px) {
+  .dashboard__calendar i {
+    z-index: 1000;
+  }
 }
 
 .fa-calendar-plus:hover {
@@ -46,41 +53,47 @@
   color: red;
 }
 
+.calendar__back {
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 1000;
+}
+
 .react-calendar {
   width: 350px;
-  background: #dff5ce;
+  background: #fbfbfb;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   border-radius: 20px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   line-height: 1.125em;
   position: absolute;
-  top: 756%;
-  left: 126%;
+  top: 26rem;
+  left: 44rem;
   transform: translate(-50%, -50%);
-  z-index: 1;
+  z-index: 1002;
 }
 
 @media (max-width: 1200px) {
   .react-calendar {
     width: 330px;
-    top: 794%;
   }
 }
 
 @media (max-width: 900px) {
   .react-calendar {
     width: 313px;
-    top: 878%;
-    left: 141%;
   }
 }
 
 @media (max-width: 600px) {
   .react-calendar {
     width: 297px;
-    top: 878%;
-    left: 150%;
+    top: 45rem;
+    left: 49%;
   }
 }
 .react-calendar--doubleView {
@@ -305,4 +318,28 @@
 
 .table__header.product {
   width: 65%;
+}
+
+.table__header.quantity {
+  text-align: center;
+}
+
+.table__footer {
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+.table__footer.total {
+  width: 65%;
+}
+
+.table__cell--quantity {
+  text-align: center;
+}
+
+.day-total {
+  position: absolute;
+  margin: 10px 10px;
+  top: 11%;
+  left: 3.5%;
 }

@@ -89,3 +89,8 @@
     opacity: 1;
   }
 }
+
+.welcome__link {
+  font-size: 3rem;
+  text-decoration: none;
+}

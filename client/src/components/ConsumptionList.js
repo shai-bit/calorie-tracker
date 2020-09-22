@@ -4,13 +4,17 @@ import * as actions from '../actions';
 
 const ConsumptionList = (props) => {
   // Fetch posts on initial load an if auth or date changes
-  const { auth, date, fetchPosts } = props;
+  const { auth, date, fetchPosts, fetchedPosts, setCalorieSum } = props;
   useEffect(() => {
     if (auth === null) {
       return;
     }
     fetchPosts({ date });
   }, [auth, date, fetchPosts]);
+  // Get calories sum if fetched posts changes
+  useEffect(() => {
+    renderTotalKcal(fetchedPosts, setCalorieSum);
+  }, [fetchedPosts, setCalorieSum]);
   return (
     <div className="consumption">
       <div className="consumption__card bkfast">
@@ -30,10 +34,19 @@ const ConsumptionList = (props) => {
               <tr>
                 <th className="table__header product">Product</th>
                 <th className="table__header">Kcal</th>
-                <th className="table__header">Qty</th>
+                <th className="table__header quantity">Qty</th>
               </tr>
               {renderFoodPosts(props.fetchedPosts, 'breakfast', props)}
             </tbody>
+            <tfoot>
+              <tr>
+                <th className="table__footer total">Total:</th>
+                <th className="table__footer quantity">
+                  {props.calorieSums.breakfast}
+                </th>
+                <th className="table__footer"></th>
+              </tr>
+            </tfoot>
           </table>
         </div>
       </div>
@@ -54,10 +67,19 @@ const ConsumptionList = (props) => {
               <tr>
                 <th className="table__header product">Product</th>
                 <th className="table__header">Kcal</th>
-                <th className="table__header">Qty</th>
+                <th className="table__header quantity">Qty</th>
               </tr>
               {renderFoodPosts(props.fetchedPosts, 'lunch', props)}
             </tbody>
+            <tfoot>
+              <tr>
+                <th className="table__footer total">Total:</th>
+                <th className="table__footer quantity">
+                  {props.calorieSums.lunch}
+                </th>
+                <th className="table__footer"></th>
+              </tr>
+            </tfoot>
           </table>
         </div>
       </div>
@@ -78,10 +100,19 @@ const ConsumptionList = (props) => {
               <tr>
                 <th className="table__header product">Product</th>
                 <th className="table__header">Kcal</th>
-                <th className="table__header">Qty</th>
+                <th className="table__header quantity">Qty</th>
               </tr>
               {renderFoodPosts(props.fetchedPosts, 'dinner', props)}
             </tbody>
+            <tfoot>
+              <tr>
+                <th className="table__footer total">Total:</th>
+                <th className="table__footer quantity">
+                  {props.calorieSums.dinner}
+                </th>
+                <th className="table__footer"></th>
+              </tr>
+            </tfoot>
           </table>
         </div>
       </div>
@@ -102,15 +133,48 @@ const ConsumptionList = (props) => {
               <tr>
                 <th className="table__header product">Product</th>
                 <th className="table__header">Kcal</th>
-                <th className="table__header">Qty</th>
+                <th className="table__header quantity">Qty</th>
               </tr>
               {renderFoodPosts(props.fetchedPosts, 'snacks', props)}
             </tbody>
+            <tfoot>
+              <tr>
+                <th className="table__footer total">Total:</th>
+                <th className="table__footer quantity">
+                  {props.calorieSums.snacks}
+                </th>
+                <th className="table__footer"></th>
+              </tr>
+            </tfoot>
           </table>
         </div>
       </div>
     </div>
   );
+};
+
+// Sums all items' kcal for every category
+const getSums = (object, foodItem) => {
+  const { kcal, quantity } = foodItem;
+  if (foodItem.category === 'breakfast') {
+    object.breakfast += kcal * quantity;
+  } else if (foodItem.category === 'lunch') {
+    object.lunch += kcal * quantity;
+  } else if (foodItem.category === 'dinner') {
+    object.dinner += kcal * quantity;
+  } else {
+    object.snacks += kcal * quantity;
+  }
+};
+
+// Makes sums and updates calorieSums property inside Redux store
+const renderTotalKcal = (fetchedPosts, setCalorieSum) => {
+  if (fetchedPosts === null || fetchedPosts === '') return 'sorry';
+  const object = { breakfast: 0, lunch: 0, dinner: 0, snacks: 0 };
+  fetchedPosts.dates[0].posts.forEach((foodItem) => {
+    getSums(object, foodItem);
+  });
+  setCalorieSum(object);
 };
 
 // Renders posts for that time of the day
@@ -126,7 +190,7 @@ const renderFoodPosts = (fetchedPosts, category, props) => {
         >
           <td className="table__cell--name">{foodItem.product}</td>
           <td>{foodItem.kcal}</td>
-          <td>{foodItem.quantity}</td>
+          <td className="table__cell--quantity">{foodItem.quantity}</td>
         </tr>
       );
     }
@@ -150,6 +214,7 @@ const mapStateToProps = (state) => {
     foodForm: state.foodForm,
     date: state.date,
     fetchedPosts: state.fetchedPosts,
+    calorieSums: state.calorieSums,
   };
 };
 

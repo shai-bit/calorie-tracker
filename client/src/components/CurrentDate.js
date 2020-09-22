@@ -23,12 +23,24 @@ const CurrentDate = (props) => {
           onClick={() => setCalendarVisibility(!calendarVisibility)}
         />
       </h2>
-      <Calendar
-        className={`${showCalendar}`}
-        value={value}
-        onChange={onChange}
-        locale={'en-US'}
-      />
+      <div
+        onClick={() => {
+          setCalendarVisibility(!calendarVisibility);
+        }}
+        className={`calendar__back ${showCalendar}`}
+      >
+        <div
+          className="calendar__container"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Calendar
+            className={`${showCalendar}`}
+            value={value}
+            onChange={onChange}
+            locale={'en-US'}
+          />
+        </div>
+      </div>
     </div>
   );
 };

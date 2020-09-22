@@ -16,3 +16,4 @@ export const UPDATE_PRODUCT_NAME = 'update_product_name';
 export const UPDATE_PRODUCT_KCAL = 'update_product_kcal';
 export const UPDATE_PRODUCT_QUANTITY = 'update_product_quantity';
 export const FETCH_POSTS = 'fetch_posts';
+export const CALORIE_SUM = 'calorie_sum';
