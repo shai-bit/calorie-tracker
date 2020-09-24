@@ -100,4 +100,18 @@ module.exports = (app) => {
     );
     return res.send('Deleted successfully');
   });
+
+  // Update goal
+  app.post('/api/update_goal', async (req, res) => {
+    await User.updateOne(
+      { _id: req.user._id },
+      {
+        $set: { goal: req.body.goal },
+      },
+      function (err) {
+        if (err) return res.send('Update goal error -->', error);
+      }
+    );
+    return res.send('Updated successfully');
+  });
 };

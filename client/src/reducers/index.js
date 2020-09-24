@@ -8,6 +8,7 @@ import createPostReducer from './createPostReducer';
 import foodFormPopupReducer from './foodFormPopupReducer';
 import fetchPostsReducer from './fetchPostsReducer';
 import calorieSumReducer from './calorieSumReducer';
+import updateGoalReducer from './updateGoalReducer';
 
 export default combineReducers({
   popup: loginPopupReducer,
@@ -19,4 +20,5 @@ export default combineReducers({
   foodForm: foodFormPopupReducer,
   fetchedPosts: fetchPostsReducer,
   calorieSums: calorieSumReducer,
+  updateGoal: updateGoalReducer,
 });

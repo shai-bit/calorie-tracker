@@ -34,6 +34,7 @@ module.exports = (app) => {
       name: req.body.name,
       email: req.body.email,
       password: hash,
+      goal: 0,
     }).save();
     req.login(user, () => {
       return res.send('user-created-loginsuccess');
