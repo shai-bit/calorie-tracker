@@ -1,56 +1,96 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 const DaysTotal = (props) => {
   const [todaysDate, setDate] = useState(null);
   const { fetchedPosts, setCalorieSum } = props;
+  const [goalValue, setGoalValue] = useState(0);
+
+  // Dynamic class for showing goal change form
+  const [formVisible, setFormVisible] = useState(false);
+  const formVisibility = formVisible === false ? "hidden" : "";
+
   // Makes sure to reset calorie count if no posts yet
   useEffect(() => {
-    if (fetchedPosts === '') {
+    if (fetchedPosts === "") {
       setCalorieSum({ breakfast: 0, lunch: 0, dinner: 0, snacks: 0 });
     }
   }, [fetchedPosts, setCalorieSum]);
 
-  // Set date on every re render
+  // Set date if user changes day
+  const { date } = props;
   useEffect(() => {
     setDate(getStringDate());
-  });
+  }, [setDate, date]);
 
   return (
     <React.Fragment>
-      {renderContent(todaysDate, props, getTotal)}
+      {renderContent(
+        todaysDate,
+        props,
+        getTotal,
+        goalValue,
+        setGoalValue,
+        formVisible,
+        setFormVisible,
+        formVisibility
+      )}
     </React.Fragment>
   );
 };
 
-const renderContent = (todaysDate, props, getTotal) => {
+// If selected day equals current day render goal, else just total kcal
+const renderContent = (
+  todaysDate,
+  props,
+  getTotal,
+  goalValue,
+  setGoalValue,
+  formVisible,
+  setFormVisible,
+  formVisibility
+) => {
   if (props.auth === null) return;
   const { goal } = props.auth;
   const { date, calorieSums } = props;
   const total = getTotal(calorieSums);
-  console.log('today:', todaysDate, 'date:', date);
   if (todaysDate === date) {
-    if (goal === 0) {
-      return (
-        <div className="day-total">
-          Goal:{' '}
-          <span onClick={async () => await props.updateGoal({ goal: 2000 })}>
-            {goal}
-          </span>{' '}
-          - Total: {total} = 0
-        </div>
-      );
+    let caloriesLeft = 0;
+    // Show a zero for sum instead of negative number
+    if (goal > 0) {
+      caloriesLeft += goal - total;
     }
     return (
-      <div className="day-total">
-        Goal:{' '}
-        <span onClick={() => props.updateGoal({ goal: 2000 })}>{goal}</span> -
-        Total: {total} = {goal - total}
+      <div className='day-total__container'>
+        <div className='day-total'>
+          <span
+            className='day-total__goal'
+            onClick={() => setFormVisible(!formVisible)}
+          >
+            Goal: {goal}
+          </span>{" "}
+          - Total: {total} ={" "}
+          <span className='day-total__remaining'>{caloriesLeft}</span> Remaining
+        </div>
+        <div className={`goal-form ${formVisibility}`}>
+          <label htmlFor='goal'>Change goal</label>
+          <input
+            id='goal'
+            type='number'
+            className='goal-form__input'
+            value={goalValue}
+            onChange={(e) => setGoalValue(e.target.value)}
+          />
+        </div>
       </div>
     );
   }
-  return <div className="day-total">Total: {total} kcal</div>;
+  return (
+    <div className='day-total__container'>
+      <div className='day-total'>Total: {total} kcal</div>
+    </div>
+  );
 };
 
 // Returns date as string
@@ -59,7 +99,7 @@ const getStringDate = () => {
   const year = date.getFullYear().toString();
   const month = date.getMonth().toString();
   const day = date.getDate().toString();
-  var fullDate = '' + year + month + day;
+  var fullDate = "" + year + month + day;
   return fullDate;
 };
 
