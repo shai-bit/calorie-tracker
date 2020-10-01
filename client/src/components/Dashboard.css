@@ -2,7 +2,7 @@
   position: relative;
   height: 87vh;
   background-color: #fff;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
 }
 
@@ -67,7 +67,7 @@
   background: #fbfbfb;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   border-radius: 20px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   line-height: 1.125em;
   position: absolute;
@@ -120,7 +120,7 @@
   border: 0;
   border-radius: 10px;
   outline: none;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 .react-calendar button:enabled:hover {
   cursor: pointer;
@@ -135,7 +135,7 @@
 }
 .react-calendar__navigation__label {
   font-size: 2rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
 .react-calendar__navigation__arrow {
@@ -344,17 +344,44 @@
   left: 3.5%;
 }
 
+.day-total__goal {
+  color: #90ee90;
+}
+
 .day-total__goal:hover {
   cursor: pointer;
-  color: #90ee90;
+  color: #ff5656;
+}
+
+.goal-form__back {
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 1000;
 }
 
 .goal-form {
   position: absolute;
+  top: 30%;
+  left: 5%;
   z-index: 1000;
   background-color: #c3eacf;
   border-radius: 10px;
   padding: 2rem;
+}
+
+.goal-form__close {
+  position: absolute;
+  top: 0;
+  right: 3%;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.goal-form__close:hover {
+  color: #ff5656;
 }
 
 .goal-form__input {
@@ -365,5 +392,9 @@
   padding: 1.2rem 1.3rem;
   margin: 3px 0;
   width: 88%;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
+}
+
+.goal-form__input:focus {
+  outline: none;
 }

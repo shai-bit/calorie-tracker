@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import * as actions from "../actions";
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 const DaysTotal = (props) => {
   const [todaysDate, setDate] = useState(null);
@@ -9,11 +9,11 @@ const DaysTotal = (props) => {
 
   // Dynamic class for showing goal change form
   const [formVisible, setFormVisible] = useState(false);
-  const formVisibility = formVisible === false ? "hidden" : "";
+  const formVisibility = formVisible === false ? 'hidden' : '';
 
   // Makes sure to reset calorie count if no posts yet
   useEffect(() => {
-    if (fetchedPosts === "") {
+    if (fetchedPosts === '') {
       setCalorieSum({ breakfast: 0, lunch: 0, dinner: 0, snacks: 0 });
     }
   }, [fetchedPosts, setCalorieSum]);
@@ -51,7 +51,7 @@ const renderContent = (
   setFormVisible,
   formVisibility
 ) => {
-  if (props.auth === null) return;
+  if (props.auth === null) return; // Auth is async
   const { goal } = props.auth;
   const { date, calorieSums } = props;
   const total = getTotal(calorieSums);
@@ -62,33 +62,51 @@ const renderContent = (
       caloriesLeft += goal - total;
     }
     return (
-      <div className='day-total__container'>
-        <div className='day-total'>
+      <div className="day-total__container">
+        <div className="day-total">
           <span
-            className='day-total__goal'
+            className="day-total__goal"
             onClick={() => setFormVisible(!formVisible)}
           >
             Goal: {goal}
-          </span>{" "}
-          - Total: {total} ={" "}
-          <span className='day-total__remaining'>{caloriesLeft}</span> Remaining
+          </span>{' '}
+          - Total: {total} ={' '}
+          <span className="day-total__remaining">{caloriesLeft}</span> Remaining
         </div>
-        <div className={`goal-form ${formVisibility}`}>
-          <label htmlFor='goal'>Change goal</label>
-          <input
-            id='goal'
-            type='number'
-            className='goal-form__input'
-            value={goalValue}
-            onChange={(e) => setGoalValue(e.target.value)}
-          />
+        <div
+          className={`goal-form__back ${formVisibility}`}
+          onClick={() => setFormVisible(!formVisible)}
+        >
+          <div
+            className={`goal-form ${formVisibility}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span
+              className="goal-form__close"
+              onClick={() => setFormVisible(!formVisible)}
+            >
+              &times;
+            </span>
+            <label htmlFor="goal">Change goal</label>
+            <input
+              id="goal"
+              type="number"
+              className="goal-form__input"
+              value={goalValue}
+              onChange={(e) => {
+                if (isNaN(parseInt(e.target.value))) return setGoalValue('');
+                setGoalValue(parseInt(e.target.value));
+                console.log(goalValue);
+              }}
+            />
+          </div>
         </div>
       </div>
     );
   }
   return (
-    <div className='day-total__container'>
-      <div className='day-total'>Total: {total} kcal</div>
+    <div className="day-total__container">
+      <div className="day-total">Total: {total} kcal</div>
     </div>
   );
 };
@@ -99,7 +117,7 @@ const getStringDate = () => {
   const year = date.getFullYear().toString();
   const month = date.getMonth().toString();
   const day = date.getDate().toString();
-  var fullDate = "" + year + month + day;
+  var fullDate = '' + year + month + day;
   return fullDate;
 };
 
