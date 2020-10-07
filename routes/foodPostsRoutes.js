@@ -103,6 +103,7 @@ module.exports = (app) => {
 
   // Update goal
   app.post('/api/update_goal', async (req, res) => {
+    console.log(req.body);
     await User.updateOne(
       { _id: req.user._id },
       {
@@ -112,6 +113,6 @@ module.exports = (app) => {
         if (err) return res.send('Update goal error -->', error);
       }
     );
-    return res.send('Updated successfully');
+    return res.send(`Updated successfully ${req.body.goal}`);
   });
 };

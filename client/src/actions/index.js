@@ -117,7 +117,7 @@ export const setCalorieSum = (sum) => {
   return { type: actions.CALORIE_SUM, payload: sum };
 };
 
-export const updateGoal = (goal) => async (dispatch) => {
+export const setUpdatedGoal = (goal) => async (dispatch) => {
   const res = await axios.post('/api/update_goal', goal);
   dispatch({ type: actions.UPDATE_GOAL, payload: res.data });
 };

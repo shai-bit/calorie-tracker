@@ -20,5 +20,5 @@ export default combineReducers({
   foodForm: foodFormPopupReducer,
   fetchedPosts: fetchPostsReducer,
   calorieSums: calorieSumReducer,
-  updateGoal: updateGoalReducer,
+  updatedGoal: updateGoalReducer,
 });

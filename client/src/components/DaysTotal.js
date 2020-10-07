@@ -34,7 +34,8 @@ const DaysTotal = (props) => {
         setGoalValue,
         formVisible,
         setFormVisible,
-        formVisibility
+        formVisibility,
+        handleEnterDown
       )}
     </React.Fragment>
   );
@@ -49,33 +50,54 @@ const renderContent = (
   setGoalValue,
   formVisible,
   setFormVisible,
-  formVisibility
+  formVisibility,
+  handleEnterDown
 ) => {
   if (props.auth === null) return; // Auth is async
   const { goal } = props.auth;
+  const { setUpdatedGoal, fetchUser } = props;
   const { date, calorieSums } = props;
   const total = getTotal(calorieSums);
   if (todaysDate === date) {
+    // Dynamic class for remaining calories
+    const remainingColor = total > goal ? 'red' : '';
     let caloriesLeft = 0;
     // Show a zero for sum instead of negative number
     if (goal > 0) {
       caloriesLeft += goal - total;
     }
     return (
-      <div className="day-total__container">
+      <div
+        className="day-total__container"
+        onKeyDown={(e) => {
+          const enter = handleEnterDown(e.key);
+          if (enter) {
+            setFormVisible(!formVisible);
+            setGoalInAPI(goal, goalValue, setUpdatedGoal, fetchUser);
+          }
+        }}
+      >
         <div className="day-total">
           <span
             className="day-total__goal"
-            onClick={() => setFormVisible(!formVisible)}
+            onClick={() => {
+              setGoalValue(goal);
+              setFormVisible(!formVisible);
+            }}
           >
             Goal: {goal}
           </span>{' '}
           - Total: {total} ={' '}
-          <span className="day-total__remaining">{caloriesLeft}</span> Remaining
+          <span className={`day-total__remaining ${remainingColor}`}>
+            {caloriesLeft} Remaining
+          </span>
         </div>
         <div
           className={`goal-form__back ${formVisibility}`}
-          onClick={() => setFormVisible(!formVisible)}
+          onClick={() => {
+            setFormVisible(!formVisible);
+            setGoalInAPI(goal, goalValue, setUpdatedGoal, fetchUser);
+          }}
         >
           <div
             className={`goal-form ${formVisibility}`}
@@ -83,7 +105,10 @@ const renderContent = (
           >
             <span
               className="goal-form__close"
-              onClick={() => setFormVisible(!formVisible)}
+              onClick={() => {
+                setFormVisible(!formVisible);
+                setGoalInAPI(goal, goalValue, setUpdatedGoal, fetchUser);
+              }}
             >
               &times;
             </span>
@@ -94,9 +119,9 @@ const renderContent = (
               className="goal-form__input"
               value={goalValue}
               onChange={(e) => {
+                // If value is left blank avoid errors
                 if (isNaN(parseInt(e.target.value))) return setGoalValue('');
                 setGoalValue(parseInt(e.target.value));
-                console.log(goalValue);
               }}
             />
           </div>
@@ -109,6 +134,29 @@ const renderContent = (
       <div className="day-total">Total: {total} kcal</div>
     </div>
   );
+};
+
+const handleEnterDown = (key) => {
+  console.log(key);
+  if (key === 'Enter') return true;
+  return false;
+};
+
+const setGoalInAPI = async (
+  currentGoal,
+  goalValue,
+  setUpdatedGoal,
+  fetchUser
+) => {
+  // If goal doesn't change dont update
+  if (currentGoal === goalValue) return;
+  // If input left empty update to 0
+  if (goalValue === '') {
+    await setUpdatedGoal({ goal: 0 });
+    return fetchUser();
+  }
+  await setUpdatedGoal({ goal: goalValue });
+  return fetchUser();
 };
 
 // Returns date as string
@@ -133,6 +181,7 @@ const mapStateToProps = (state) => {
     fetchedPosts: state.fetchedPosts,
     auth: state.auth,
     date: state.date,
+    updatedGoal: state.updatedGoal,
   };
 };
 
