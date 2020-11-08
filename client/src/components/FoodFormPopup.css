@@ -19,7 +19,7 @@
 
 .food-form__container {
   width: 54%;
-  min-height: 48rem;
+  height: 85%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -27,7 +27,6 @@
   overflow: hidden;
   border-radius: 10px;
   background-color: white;
-  /* background-image: url('../resources/eating.svg'); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -135,8 +134,8 @@
   padding: 1.2rem 2.5rem;
 }
 
-@media(max-width: 600px){
-  .food-form__form button.update-delete{
+@media (max-width: 600px) {
+  .food-form__form button.update-delete {
     padding: 1.2rem 1.9rem;
   }
 }

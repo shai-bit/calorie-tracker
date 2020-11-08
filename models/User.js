@@ -11,7 +11,13 @@ const userSchema = new Schema({
     {
       date: String,
       posts: [
-        { category: String, product: String, quantity: Number, kcal: Number },
+        { category: String,
+         product: String,
+         quantity: Number,
+         kcal: Number,
+         carbs: Number,
+         fats: Number,
+         protein: Number },
       ],
     },
   ],

@@ -6,6 +6,9 @@ import {
   UPDATE_PRODUCT_NAME,
   UPDATE_PRODUCT_KCAL,
   UPDATE_PRODUCT_QUANTITY,
+  UPDATE_PRODUCT_CARBS,
+  UPDATE_PRODUCT_FATS,
+  UPDATE_PRODUCT_PROTEIN
 } from '../actions/types';
 
 export default (
@@ -15,6 +18,9 @@ export default (
     product: '',
     kcal: 0,
     quantity: 0,
+    carbs: 0,
+    fats: 0,
+    protein: 0,
     action: '',
     itemId: null,
   },
@@ -29,6 +35,9 @@ export default (
         product: '',
         kcal: 0,
         quantity: 0,
+        carbs: 0,
+        fats: 0,
+        protein: 0,
         itemId: null,
       };
     case SHOW_FOODFORM_POPUP_ADD:
@@ -39,7 +48,7 @@ export default (
         action: action.payload.action,
       };
     case SHOW_FOODFORM_POPUP_UPDATE:
-      const { product, kcal, quantity, _id } = action.payload.item;
+      const { product, kcal, quantity, carbs, fats, protein, _id } = action.payload.item;
       return {
         ...state,
         isVisible: true,
@@ -47,6 +56,9 @@ export default (
         product,
         kcal,
         quantity,
+        carbs,
+        fats, 
+        protein,
         action: action.payload.action,
         itemId: _id,
       };
@@ -58,6 +70,12 @@ export default (
       return { ...state, kcal: action.payload };
     case UPDATE_PRODUCT_QUANTITY:
       return { ...state, quantity: action.payload };
+    case UPDATE_PRODUCT_CARBS: 
+      return { ...state, carbs: action.payload};
+    case UPDATE_PRODUCT_FATS:
+      return { ...state, fats: action.payload};
+    case UPDATE_PRODUCT_PROTEIN:
+      return { ...state, protein: action.payload};
     default:
       return state;
   }

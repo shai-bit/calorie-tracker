@@ -60,6 +60,30 @@ const FoodFormPopup = (props) => {
               value={props.foodForm.quantity}
               onChange={(e) => handleNumericChange(e, 'quantity')}
             />
+            <label htmlFor="carbs">Carbs (g)</label>
+            <input
+              id="carbs"
+              type="number"
+              className="food-form__input"
+              value={props.foodForm.carbs}
+              onChange={(e) => handleNumericChange(e, 'carbs')}
+            />
+            <label htmlFor="fats">Fats (g)</label>
+            <input
+              id="fats"
+              type="number"
+              className="food-form__input"
+              value={props.foodForm.fats}
+              onChange={(e) => handleNumericChange(e, 'fats')}
+            />
+            <label htmlFor="protein">Protein (g)</label>
+            <input
+              id="protein"
+              type="number"
+              className="food-form__input"
+              value={props.foodForm.protein}
+              onChange={(e) => handleNumericChange(e, 'protein')}
+            />
             <div className={`food-form__alert ${showAlert}`}>
               Please complete all inputs
             </div>
@@ -116,6 +140,30 @@ const FoodFormPopup = (props) => {
               value={props.foodForm.quantity}
               onChange={(e) => handleNumericChange(e, 'quantity')}
             />
+            <label htmlFor="carbs">Carbs (g)</label>
+            <input
+              id="carbs"
+              type="number"
+              className="food-form__input"
+              value={props.foodForm.carbs}
+              onChange={(e) => handleNumericChange(e, 'carbs')}
+            />
+            <label htmlFor="fats">Fats (g)</label>
+            <input
+              id="fats"
+              type="number"
+              className="food-form__input"
+              value={props.foodForm.fats}
+              onChange={(e) => handleNumericChange(e, 'fats')}
+            />
+            <label htmlFor="protein">Protein (g)</label>
+            <input
+              id="protein"
+              type="number"
+              className="food-form__input"
+              value={props.foodForm.protein}
+              onChange={(e) => handleNumericChange(e, 'protein')}
+            />
             <div className={`food-form__alert ${showAlert}`}>
               Please complete all inputs
             </div>
@@ -138,20 +186,26 @@ const FoodFormPopup = (props) => {
   };
 
   const handleInvalidInput = (props) => {
-    const { product, quantity, kcal } = props.foodForm;
+    const { product, quantity, kcal, carbs, fats, protein } = props.foodForm;
     if (
       product === '' ||
       quantity === 0 ||
       quantity === '' ||
       kcal === 0 ||
-      kcal === ''
+      kcal === '' ||
+      carbs === 0 ||
+      carbs === '' ||
+      fats === 0 ||
+      fats === '' ||
+      protein === 0 ||
+      protein === '' 
     )
       return true;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { category, product, quantity, kcal } = props.foodForm;
+    const { category, product, quantity, kcal, carbs, fats, protein } = props.foodForm;
     const { date } = props;
     // If incomplete or invalid input show warning
     if (handleInvalidInput(props)) {
@@ -160,7 +214,7 @@ const FoodFormPopup = (props) => {
     // Create post, fetch them again to re-render, close
     await props.createPost({
       date: date,
-      post: { category, product, kcal, quantity },
+      post: { category, product, kcal, quantity, carbs, fats, protein },
     });
     await props.fetchPosts({ date: props.date });
     closePopup();
@@ -189,12 +243,16 @@ const FoodFormPopup = (props) => {
   };
 
   const handleNumericChange = (e, type) => {
-    const updateFunction =
-      type === 'kcal' ? props.updateProductKcal : props.updateProductQuantity;
+    const updateFunction = 
+      type === 'kcal' ? props.updateProductKcal :
+      type === 'quantity' ? props.updateProductQuantity:
+      type === 'carbs' ? props.updateProductCarbs : 
+      type === 'fats' ? props.updateProductFats : 
+      props.updateProductProtein;
     if (isNaN(parseInt(e.target.value))) return updateFunction('');
     updateFunction(parseInt(e.target.value));
   };
-  // Hide popup, reset form, hide any alert
+  // Hide popup, reset form values, hide any alert
   const closePopup = () => {
     props.hideFoodForm();
     setCompleteInput(true);

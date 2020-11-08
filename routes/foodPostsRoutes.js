@@ -33,6 +33,9 @@ module.exports = (app) => {
             product: req.body.post.product,
             quantity: req.body.post.quantity,
             kcal: req.body.post.kcal,
+            carbs: req.body.post.carbs,
+            fats: req.body.post.fats,
+            protein: req.body.post.protein,
           },
         },
       },
@@ -56,7 +59,7 @@ module.exports = (app) => {
 
   // Post updating
   app.post('/api/update_post', async (req, res) => {
-    const { category, product, kcal, quantity, itemId } = req.body.updatedItem;
+    const { category, product, kcal, quantity, carbs, fats, protein, itemId } = req.body.updatedItem;
     await User.updateOne(
       { _id: req.user._id },
       {
@@ -66,6 +69,9 @@ module.exports = (app) => {
             product,
             kcal,
             quantity,
+            carbs,
+            fats,
+            protein
           },
         },
       },
