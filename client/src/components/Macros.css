@@ -1,0 +1,8 @@
+.macros {
+  position: absolute;
+  width: 33%;
+  height: 79%;
+  top: 20%;
+  right: 2%;
+  display: inline-block;
+}

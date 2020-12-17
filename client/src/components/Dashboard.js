@@ -5,6 +5,7 @@ import WelcomeUser from './WelcomeUser';
 import ConsumptionList from './ConsumptionList';
 import FoodFormPopup from './FoodFormPopup';
 import DaysTotal from './DaysTotal';
+import Macros from './Macros';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -15,6 +16,7 @@ const Dashboard = () => {
       <CurrentDate />
       <DaysTotal />
       <ConsumptionList />
+      <Macros />
     </div>
   );
 };

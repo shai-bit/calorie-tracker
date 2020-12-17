@@ -21,3 +21,4 @@ export const UPDATE_PRODUCT_PROTEIN = 'update_product_protein';
 export const FETCH_POSTS = 'fetch_posts';
 export const CALORIE_SUM = 'calorie_sum';
 export const UPDATE_GOAL = 'update_goal';
+export const MACROS_SUM = 'macros_sum';

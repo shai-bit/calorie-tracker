@@ -114,16 +114,16 @@ export const updateProductQuantity = (quantity) => {
 };
 
 export const updateProductCarbs = (carbs) => {
-  return { type: actions.UPDATE_PRODUCT_CARBS, payload: carbs}
-}
+  return { type: actions.UPDATE_PRODUCT_CARBS, payload: carbs };
+};
 
 export const updateProductFats = (fats) => {
-  return { type: actions.UPDATE_PRODUCT_FATS, payload: fats}
-}
+  return { type: actions.UPDATE_PRODUCT_FATS, payload: fats };
+};
 
 export const updateProductProtein = (protein) => {
-  return { type: actions.UPDATE_PRODUCT_PROTEIN, payload: protein }
-}
+  return { type: actions.UPDATE_PRODUCT_PROTEIN, payload: protein };
+};
 
 export const setCalorieSum = (sum) => {
   return { type: actions.CALORIE_SUM, payload: sum };
@@ -132,4 +132,8 @@ export const setCalorieSum = (sum) => {
 export const setUpdatedGoal = (goal) => async (dispatch) => {
   const res = await axios.post('/api/update_goal', goal);
   dispatch({ type: actions.UPDATE_GOAL, payload: res.data });
+};
+
+export const setMacrosSum = (sum) => {
+  return { type: actions.MACROS_SUM, payload: sum };
 };
