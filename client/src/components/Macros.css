@@ -1,8 +1,36 @@
-.macros {
+.macros__container {
   position: absolute;
   width: 33%;
   height: 79%;
   top: 20%;
   right: 2%;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .macros__container {
+    width: 100%;
+    left: 0;
+    top: 102%;
+  }
+}
+
+.macros__title {
+  font-weight: 600;
+}
+
+.macros__values {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .macros__values {
+    width: 90%;
+  }
 }

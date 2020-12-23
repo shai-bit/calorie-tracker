@@ -1,5 +1,4 @@
 import { MACROS_SUM } from '../actions/types';
-import Macros from '../components/Macros';
 
 export default (state = { carbs: 0, fats: 0, protein: 0 }, action) => {
   switch (action.type) {
